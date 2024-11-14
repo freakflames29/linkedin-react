@@ -6,7 +6,9 @@ import NavNetwork from "../assets/images/nav-network.svg"
 import NavMsg from "../assets/images/nav-messaging.svg"
 import NavJobs from "../assets/images/nav-jobs.svg"
 import NavNotification from "../assets/images/nav-notifications.svg"
-
+import NavUserIcon from "../assets/images/user.svg"
+import NavWorkIcon from "../assets/images/nav-work.svg"
+import NavDrop from "../assets/images/down-icon.svg"
 
 const Container = styled.div`
     background-color: white;
@@ -14,7 +16,7 @@ const Container = styled.div`
     left: 0;
     position: fixed;
     z-index: 100;
-    padding: 10px 24px;
+    padding: 0 24px;
     top: 0;
     width: 100vw;
 
@@ -89,10 +91,27 @@ const NavWrap = styled.ul`
 
     flex-wrap: nowrap;
     list-style: none;
+
+
+    .active {
+        span:after {
+            content: "";
+            transform: scaleX(1);
+            border-bottom: 2px solid;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            transition: 0.2s ease;
+            width: 100%;
+            border-color: #000;
+
+        }
+    }
 `
 const NavList = styled.li`
     display: flex;
     align-items: center;
+
 
     a {
         align-items: center;
@@ -130,6 +149,44 @@ const NavList = styled.li`
 `
 
 
+const SignOut = styled.div`
+    position: absolute;
+    top: 45px;
+    background: white;
+    border-radius: 0 0 5px 5px;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    transition-duration: 167ms;
+    display: none;
+    box-shadow: 1px 0px 1px;
+`
+const User = styled(NavList)`
+
+    a > img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+    }
+    
+    &:hover{
+        ${SignOut}{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+`;
+const Work = styled(User)`
+    border-left: 2px solid gray;
+`;
+
+
 const Header = (props) => {
     return <div>
         <Container>
@@ -151,10 +208,19 @@ const Header = (props) => {
                 </Search>
                 <Nav>
                     <NavWrap>
-                        <NavList>
+                        <NavList className="active">
                             <a>
                                 <img src={NavHome} alt=""/>
                                 <span>Home</span>
+                            </a>
+
+                        </NavList>
+
+
+                        <NavList>
+                            <a>
+                                <img src={NavNetwork} alt=""/>
+                                <span>My network</span>
                             </a>
 
                         </NavList>
@@ -168,7 +234,7 @@ const Header = (props) => {
                         <NavList>
                             <a>
                                 <img src={NavMsg} alt=""/>
-                                <span>Messges</span>
+                                <span>Messages</span>
                             </a>
 
                         </NavList>
@@ -180,6 +246,32 @@ const Header = (props) => {
                             </a>
 
                         </NavList>
+
+                        <User>
+                            <a>
+                                <img src={NavUserIcon} alt=""/>
+                                <span>Me</span>
+                                <img src={NavDrop} alt=""/>
+                            </a>
+                            <SignOut>
+                                <a>
+                                    Sign out
+                                </a>
+
+                            </SignOut>
+                        </User>
+
+
+                        <Work>
+                            <a>
+                                <img src={NavWorkIcon} alt=""/>
+                                <span>Work
+                                    <img src={NavDrop} alt=""/>
+                                </span>
+                            </a>
+                        </Work>
+
+
                     </NavWrap>
                 </Nav>
             </Content>
