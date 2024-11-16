@@ -33,7 +33,7 @@ const Layout = styled.div`
     row-gap: 25px;
     grid-template-rows: auto;
     margin: 25px 0;
-    
+
     padding: 0 5%;
 `
 

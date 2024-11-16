@@ -19,11 +19,11 @@ const ArtCard = styled.div`
 
 `;
 const UserInfo = styled.div`
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     padding: 12px 12px 16px;
     word-wrap: break-word;
     word-break: break-word;
-    
+
 
 `
 const CardBackground = styled.div`
@@ -52,8 +52,23 @@ const Photo = styled.div`
     border-radius: 50%;
 
 `
-const LinkCustom = styled.div``
-const AddphotoText = styled.div``
+const LinkCustom = styled.div`
+font-size: 20px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: rgba(0,0,0,0.9);
+
+
+`
+const AddphotoText = styled.div`
+
+    margin-top: 4px;
+    font-size: 15px;
+    line-height: 1.33;
+    font-weight: 400;
+
+
+`
 
 const Leftside = () => {
     return (<>
@@ -61,19 +76,19 @@ const Leftside = () => {
                 <ArtCard>
                     <UserInfo>
                         <CardBackground/>
-                            <a>
-                                <Photo/>
-                                    <LinkCustom>
-                                        Welchome there
-                                    </LinkCustom>
+                        <a>
+                            <Photo/>
+                            <LinkCustom>
+                                Welcome there
+                            </LinkCustom>
 
-                            </a>
+                        </a>
 
-                            <a>
-                                <AddphotoText>
-                                    add a photo
-                                </AddphotoText>
-                            </a>
+                        <a>
+                            <AddphotoText>
+                                add a photo
+                            </AddphotoText>
+                        </a>
 
                     </UserInfo>
 
