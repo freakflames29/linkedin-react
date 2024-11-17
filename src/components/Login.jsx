@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Logo from "/src/assets/images/login-logo.svg"
 import HeroImg from "../assets/images/login-hero.svg"
 import GoogleIcon from "../assets/images/google.svg"
+import {connect} from "react-redux";
+import SigninAPI from "../actions/index.js";
+import {Navigate} from "react-router-dom";
 
 const Container = styled.div`
     padding: 0px;
@@ -122,7 +125,7 @@ const Form = styled.div`
     width: 408px;
     @media (max-width: 768px) {
         margin-top: 20px;
-        
+
     }
 
 `
@@ -136,13 +139,14 @@ const Google = styled.button`
     font-size: 20px;
     border-radius: 28px;
     background-color: white;
-    
+
     cursor: pointer;
-    img{
+
+    img {
         margin-right: 10px;
     }
-    
-    &:hover{
+
+    &:hover {
         background-color: whitesmoke;
     }
 `
@@ -150,6 +154,7 @@ const Google = styled.button`
 const Login = (props) => {
     return (<>
         <Container>
+            {props.user && <Navigate to={"/home"}/>}
             <Nav>
                 <a href="/">
                     <img src={Logo} alt=""/>
@@ -168,7 +173,7 @@ const Login = (props) => {
                 </Hero>
 
                 <Form>
-                    <Google>
+                    <Google onClick={() => props.signIn()}>
                         <img src={GoogleIcon} alt="google icon"/>
                         Login with google
                     </Google>
@@ -181,4 +186,16 @@ const Login = (props) => {
 }
 
 
-export default Login;
+const mapSateToProps = state => {
+    return {
+        user: state.userState.user
+    }
+}
+const mapDispatchToProps = dispatch => ({
+    signIn: () => {
+        dispatch(SigninAPI())
+    }
+
+})
+
+export default connect(mapSateToProps, mapDispatchToProps)(Login);

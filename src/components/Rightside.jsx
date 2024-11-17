@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import FeedIcon from "../assets/images/feed-icon.svg"
+import RightIcon from "../assets/images/right-icon.svg"
 
 const Container = styled.div`
     grid-area: Rightside;
@@ -30,21 +31,24 @@ const Title = styled.div`
 `;
 
 const FeedList = styled.ul`
-margin-top: 16px;
-    li{
+    margin-top: 16px;
+
+    li {
         display: flex;
         align-items: center;
         margin: 12px 0;
         position: relative;
         font-size: 14px;
+
         & > div {
             display: flex;
             flex-direction: column;
         }
     }
-    button{
+
+    button {
         background-color: transparent;
-        color: rgba(0,0,0,0.5);
+        color: rgba(0, 0, 0, 0.5);
         padding: 15px;
         align-items: center;
         border-radius: 15px;
@@ -61,7 +65,7 @@ margin-top: 16px;
 `
 
 const Avatar = styled.div`
-background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/63/Number_sign.svg");
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/63/Number_sign.svg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,6 +75,19 @@ background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/63/Numbe
 
 `
 
+const Recommendation = styled.a`
+    color: #0a66c2;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+
+`
+const BannerCard = styled(FollowCard)`
+    img {
+        width: 100%;
+        height: 100%;
+    }
+`
 
 const Rightside = () => {
     return (<>
@@ -102,7 +119,19 @@ const Rightside = () => {
                         </div>
                     </li>
                 </FeedList>
+                <Recommendation>
+                    View all recommendation
+                    <img src={RightIcon} alt=""/>
+                </Recommendation>
             </FollowCard>
+
+            <BannerCard>
+                <img
+                    src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
+
+
+                    alt=""/>
+            </BannerCard>
         </Container>
     </>);
 };
