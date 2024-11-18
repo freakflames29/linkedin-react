@@ -1,5 +1,5 @@
 import {FireAuth, Googleprovider} from "../firebase.js";
-import {signInWithPopup} from "firebase/auth"
+import {signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth"
 import {SET_USER} from "./actionType.js";
 
 export const setUser = (payload) => {
@@ -15,5 +15,28 @@ export default function SigninAPI() {
                 console.log(payload)
             })
             .catch(err => alert(err.message))
+    }
+}
+
+
+export function getUserAuth() {
+    return (dispatch) => {
+
+
+        onAuthStateChanged(FireAuth, async (user) => {
+            if (user) {
+                dispatch(setUser(user))
+            }
+        })
+    }
+}
+
+export function signoutAPI() {
+    return (dispatch) => {
+        signOut(FireAuth)
+            .then(() => {
+                dispatch(setUser(null))
+            })
+            .catch(err => console.log(err))
     }
 }

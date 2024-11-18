@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import FeedIcon from "../assets/images/feed-icon.svg"
 import RightIcon from "../assets/images/right-icon.svg"
+import  BannerImg from "../assets/images/banner.jpg"
 
 const Container = styled.div`
     grid-area: Rightside;
@@ -127,7 +128,7 @@ const Rightside = () => {
 
             <BannerCard>
                 <img
-                    src="https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg"
+                    src={BannerImg}
 
 
                     alt=""/>
