@@ -6,6 +6,8 @@ import ItemIcon from "../assets/images/item-icon.svg"
 
 import PlusIcon from "../assets/images/plus-icon.svg"
 
+import {connect} from "react-redux";
+
 const Container = styled.div`
     grid-area: Leftside;
 
@@ -187,7 +189,7 @@ const Leftside = (props) => {
                         <a>
                             <Photo/>
                             <LinkCustom>
-                                Welcome there
+                                Welcome {props.user ? props.user.displayName : "there!"}
                             </LinkCustom>
 
                         </a>
@@ -246,4 +248,10 @@ const Leftside = (props) => {
     );
 };
 
-export default Leftside;
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.userState.user
+    }
+}
+export default connect(mapStateToProps)(Leftside);

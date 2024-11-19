@@ -9,6 +9,7 @@ import {FcLike} from "react-icons/fc";
 import {FaThumbsUp} from "react-icons/fa";
 import {FaAlignJustify} from "react-icons/fa";
 import {FaShare, FaComment, FaPaperPlane} from "react-icons/fa";
+import PostModal from "./PostModal.jsx";
 
 
 const Container = styled.div`
@@ -305,6 +306,8 @@ const Mainside = () => {
                     </SocialActions>
                 </Article>
             </div>
+
+            <PostModal/>
         </Container>
     </>);
 };
